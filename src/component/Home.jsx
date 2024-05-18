@@ -8,6 +8,11 @@ import { getCategory } from '../redux/actions/CategoryAction'
 function Home() {
     const dispatch = useDispatch()
     // console.log(dispatch)
+
+    //useSelector is used to get Data
+    const {categories} = useSelector((state)=>state.cat)
+    console.log(categories)
+
     useEffect(() => {
         dispatch(getCategory())
     },[dispatch])
