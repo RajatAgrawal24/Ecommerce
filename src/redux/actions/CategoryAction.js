@@ -4,6 +4,7 @@ import {
     ALL_CATEGORY_FAIL,
     CLEAR_ERRORS
 } from '../constants/CategoryConstant'
+
 import axios from 'axios'
 
 export const getCategory = () => async (dispatch) => {
@@ -11,7 +12,7 @@ export const getCategory = () => async (dispatch) => {
         dispatch({type : ALL_CATEGORY_REQUEST})
         let link = 'https://apiexpress-fekv.onrender.com/api/getAllCategories'
         const {data} = await axios.get(link)
-        console.log(data)
+        // console.log(data)
         
         dispatch({
             type : ALL_CATEGORY_SUCCESS,

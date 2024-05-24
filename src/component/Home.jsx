@@ -4,6 +4,7 @@ import Product from './product/Product'
 import Category from './category/Category'
 import { useDispatch , useSelector } from 'react-redux'
 import { getCategory } from '../redux/actions/CategoryAction'
+import { getProducts } from '../redux/actions/ProductAction'
 
 function Home() {
     const dispatch = useDispatch()
@@ -11,10 +12,14 @@ function Home() {
 
     //useSelector is used to get Data
     const {categories} = useSelector((state)=>state.cat)
-    console.log(categories)
+    // console.log(categories)
+
+    const {products} = useSelector((state)=>state.pro)
+    // console.log(products)
 
     useEffect(() => {
         dispatch(getCategory())
+        dispatch(getProducts())
     },[dispatch])
   return (
     <>
@@ -118,12 +123,30 @@ function Home() {
 
 
     {/* <!-- Categories Start --> */}
-    <Category/>
+    <div className="container-fluid pt-5">
+        <h2 className="section-title position-relative text-uppercase mx-xl-5 mb-4"><span className="bg-secondary pr-3">Categories</span></h2>
+        <div className="row px-xl-5 pb-3">
+            {
+                categories.map((category)=>(
+                    <Category category={category}/>
+                ))
+            }
+        </div>
+    </div>
     {/* <!-- Categories End --> */}
 
 
     {/* <!-- Products Start --> */}
-    <Product/>
+    <div className="container-fluid pt-5 pb-3">
+        <h2 className="section-title position-relative text-uppercase mx-xl-5 mb-4"><span className="bg-secondary pr-3">Featured Products</span></h2>
+        <div className="row px-xl-5">
+            {
+                products.map((product)=>(
+                    <Product product={product}/>
+                ))
+            }
+        </div>
+    </div>
     {/* <!-- Products End --> */}
 
 

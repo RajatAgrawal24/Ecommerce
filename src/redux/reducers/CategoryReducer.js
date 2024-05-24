@@ -16,7 +16,7 @@ export const categoriesReducer = (state = { categories: [] }, action) => {
     case ALL_CATEGORY_SUCCESS:
       return {
         loading: false,
-        categories: action.payload,
+        categories: action.payload.categories,
       };
     case ALL_CATEGORY_FAIL:
       return {
