@@ -1,8 +1,12 @@
 import React from 'react'
+import { Helmet } from 'react-helmet'
 
-function MetaData() {
+function MetaData({title}) {
   return (
-    <div>MetaData</div>
+    <Helmet>
+      <title>{`${title}-JewelShop`}</title>
+      {/* <title>{title}</title> */}
+    </Helmet>
   )
 }
 

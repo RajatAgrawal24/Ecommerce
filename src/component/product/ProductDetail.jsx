@@ -1,7 +1,24 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link, useParams } from 'react-router-dom'
+import Product from './Product'
+import Loading from '../layout/Loading'
+import { getProductDetails, getProducts } from '../../redux/actions/ProductAction'
 
 function ProductDetail() {
+    const dispatch = useDispatch()
+    const {products,loading} = useSelector((state)=>state.pro)
+    
+    const {id} = useParams()
+    // console.log(id)
+    const {product} = useSelector((state) => state.pDetail)
+    // console.log(product)
+
+    useEffect(() => {
+        dispatch(getProducts())
+        dispatch(getProductDetails(id))
+    },[dispatch])
+    
   return (
     <>
     {/* <!-- Breadcrumb Start --> */}
@@ -25,16 +42,10 @@ function ProductDetail() {
                 <div id="product-carousel" className="carousel slide" data-ride="carousel">
                     <div className="carousel-inner bg-light">
                         <div className="carousel-item active">
-                            <img className="w-100 h-100" src="/images/product-1.jpg" alt="Image"/>
+                            <img className="w-100 h-100" src={product?.images?.url} alt="Image"/>
                         </div>
                         <div className="carousel-item">
-                            <img className="w-100 h-100" src="/images/product-2.jpg" alt="Image"/>
-                        </div>
-                        <div className="carousel-item">
-                            <img className="w-100 h-100" src="/images/product-3.jpg" alt="Image"/>
-                        </div>
-                        <div className="carousel-item">
-                            <img className="w-100 h-100" src="/images/product-4.jpg" alt="Image"/>
+                            <img className="w-100 h-100" src={product?.images?.url} alt="Image"/>
                         </div>
                     </div>
                     <Link className="carousel-control-prev" to="#product-carousel" data-slide="prev">
@@ -48,7 +59,7 @@ function ProductDetail() {
 
             <div className="col-lg-7 h-auto mb-30">
                 <div className="h-100 bg-light p-30">
-                    <h3>Product Name Goes Here</h3>
+                    <h3>{product.name}</h3>
                     <div className="d-flex mb-3">
                         <div className="text-primary mr-2">
                             <small className="fas fa-star"></small>
@@ -57,12 +68,10 @@ function ProductDetail() {
                             <small className="fas fa-star-half-alt"></small>
                             <small className="far fa-star"></small>
                         </div>
-                        <small className="pt-1">(99 Reviews)</small>
+                        <small className="pt-1">({product.stock} in stock)</small>
                     </div>
-                    <h3 className="font-weight-semi-bold mb-4">$150.00</h3>
-                    <p className="mb-4">Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit
-                        clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no sea
-                        Nonumy</p>
+                    <h3 className="font-weight-semi-bold mb-4">${product.price}</h3>
+                    <p className="mb-4">{product.description}</p>
                     <div className="d-flex mb-3">
                         <strong className="text-dark mr-3">Sizes:</strong>
                         <form>
@@ -161,8 +170,7 @@ function ProductDetail() {
                     <div className="tab-content">
                         <div className="tab-pane fade show active" id="tab-pane-1">
                             <h4 className="mb-3">Product Description</h4>
-                            <p>Eos no lorem eirmod diam diam, eos elitr et gubergren diam sea. Consetetur vero aliquyam invidunt duo dolores et duo sit. Vero diam ea vero et dolore rebum, dolor rebum eirmod consetetur invidunt sed sed et, lorem duo et eos elitr, sadipscing kasd ipsum rebum diam. Dolore diam stet rebum sed tempor kasd eirmod. Takimata kasd ipsum accusam sadipscing, eos dolores sit no ut diam consetetur duo justo est, sit sanctus diam tempor aliquyam eirmod nonumy rebum dolor accusam, ipsum kasd eos consetetur at sit rebum, diam kasd invidunt tempor lorem, ipsum lorem elitr sanctus eirmod takimata dolor ea invidunt.</p>
-                            <p>Dolore magna est eirmod sanctus dolor, amet diam et eirmod et ipsum. Amet dolore tempor consetetur sed lorem dolor sit lorem tempor. Gubergren amet amet labore sadipscing clita clita diam clita. Sea amet et sed ipsum lorem elitr et, amet et labore voluptua sit rebum. Ea erat sed et diam takimata sed justo. Magna takimata justo et amet magna et.</p>
+                            <p>{product.description}</p>
                         </div>
                         <div className="tab-pane fade" id="tab-pane-2">
                             <h4 className="mb-3">Additional Information</h4>
@@ -262,138 +270,16 @@ function ProductDetail() {
     {/* <!-- Shop Detail End --> */}
 
     {/* <!-- Products Start --> */}
-    <div className="container-fluid py-5">
-        <h2 className="section-title position-relative text-uppercase mx-xl-5 mb-4"><span className="bg-secondary pr-3">You May Also Like</span></h2>
+    <div className="container-fluid pt-5 pb-3">
+        <h2 className="section-title position-relative text-uppercase mx-xl-5 mb-4"><span className="bg-secondary pr-3">Featured Products</span></h2>
         <div className="row px-xl-5">
-            <div className="col">
-                <div className="owl-carousel related-carousel">
-                    <div className="product-item bg-light">
-                        <div className="product-img position-relative overflow-hidden">
-                            <img className="img-fluid w-100" src="/images/product-1.jpg" alt=""/>
-                            <div className="product-action">
-                                <Link className="btn btn-outline-dark btn-square" to=""><i className="fa fa-shopping-cart"></i></Link>
-                                <Link className="btn btn-outline-dark btn-square" to=""><i className="far fa-heart"></i></Link>
-                                <Link className="btn btn-outline-dark btn-square" to=""><i className="fa fa-sync-alt"></i></Link>
-                                <Link className="btn btn-outline-dark btn-square" to=""><i className="fa fa-search"></i></Link>
-                            </div>
-                        </div>
-                        <div className="text-center py-4">
-                            <Link className="h6 text-decoration-none text-truncate" to="">Product Name Goes Here</Link>
-                            <div className="d-flex align-items-center justify-content-center mt-2">
-                                <h5>$123.00</h5><h6 className="text-muted ml-2"><del>$123.00</del></h6>
-                            </div>
-                            <div className="d-flex align-items-center justify-content-center mb-1">
-                                <small className="fa fa-star text-primary mr-1"></small>
-                                <small className="fa fa-star text-primary mr-1"></small>
-                                <small className="fa fa-star text-primary mr-1"></small>
-                                <small className="fa fa-star text-primary mr-1"></small>
-                                <small className="fa fa-star text-primary mr-1"></small>
-                                <small>(99)</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="product-item bg-light">
-                        <div className="product-img position-relative overflow-hidden">
-                            <img className="img-fluid w-100" src="/images/product-2.jpg" alt=""/>
-                            <div className="product-action">
-                                <Link className="btn btn-outline-dark btn-square" to=""><i className="fa fa-shopping-cart"></i></Link>
-                                <Link className="btn btn-outline-dark btn-square" to=""><i className="far fa-heart"></i></Link>
-                                <Link className="btn btn-outline-dark btn-square" to=""><i className="fa fa-sync-alt"></i></Link>
-                                <Link className="btn btn-outline-dark btn-square" to=""><i className="fa fa-search"></i></Link>
-                            </div>
-                        </div>
-                        <div className="text-center py-4">
-                            <Link className="h6 text-decoration-none text-truncate" to="">Product Name Goes Here</Link>
-                            <div className="d-flex align-items-center justify-content-center mt-2">
-                                <h5>$123.00</h5><h6 className="text-muted ml-2"><del>$123.00</del></h6>
-                            </div>
-                            <div className="d-flex align-items-center justify-content-center mb-1">
-                                <small className="fa fa-star text-primary mr-1"></small>
-                                <small className="fa fa-star text-primary mr-1"></small>
-                                <small className="fa fa-star text-primary mr-1"></small>
-                                <small className="fa fa-star text-primary mr-1"></small>
-                                <small className="fa fa-star text-primary mr-1"></small>
-                                <small>(99)</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="product-item bg-light">
-                        <div className="product-img position-relative overflow-hidden">
-                            <img className="img-fluid w-100" src="/images/product-3.jpg" alt=""/>
-                            <div className="product-action">
-                                <Link className="btn btn-outline-dark btn-square" to=""><i className="fa fa-shopping-cart"></i></Link>
-                                <Link className="btn btn-outline-dark btn-square" to=""><i className="far fa-heart"></i></Link>
-                                <Link className="btn btn-outline-dark btn-square" to=""><i className="fa fa-sync-alt"></i></Link>
-                                <Link className="btn btn-outline-dark btn-square" to=""><i className="fa fa-search"></i></Link>
-                            </div>
-                        </div>
-                        <div className="text-center py-4">
-                            <Link className="h6 text-decoration-none text-truncate" to="">Product Name Goes Here</Link>
-                            <div className="d-flex align-items-center justify-content-center mt-2">
-                                <h5>$123.00</h5><h6 className="text-muted ml-2"><del>$123.00</del></h6>
-                            </div>
-                            <div className="d-flex align-items-center justify-content-center mb-1">
-                                <small className="fa fa-star text-primary mr-1"></small>
-                                <small className="fa fa-star text-primary mr-1"></small>
-                                <small className="fa fa-star text-primary mr-1"></small>
-                                <small className="fa fa-star text-primary mr-1"></small>
-                                <small className="fa fa-star text-primary mr-1"></small>
-                                <small>(99)</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="product-item bg-light">
-                        <div className="product-img position-relative overflow-hidden">
-                            <img className="img-fluid w-100" src="/images/product-4.jpg" alt=""/>
-                            <div className="product-action">
-                                <Link className="btn btn-outline-dark btn-square" to=""><i className="fa fa-shopping-cart"></i></Link>
-                                <Link className="btn btn-outline-dark btn-square" to=""><i className="far fa-heart"></i></Link>
-                                <Link className="btn btn-outline-dark btn-square" to=""><i className="fa fa-sync-alt"></i></Link>
-                                <Link className="btn btn-outline-dark btn-square" to=""><i className="fa fa-search"></i></Link>
-                            </div>
-                        </div>
-                        <div className="text-center py-4">
-                            <Link className="h6 text-decoration-none text-truncate" to="">Product Name Goes Here</Link>
-                            <div className="d-flex align-items-center justify-content-center mt-2">
-                                <h5>$123.00</h5><h6 className="text-muted ml-2"><del>$123.00</del></h6>
-                            </div>
-                            <div className="d-flex align-items-center justify-content-center mb-1">
-                                <small className="fa fa-star text-primary mr-1"></small>
-                                <small className="fa fa-star text-primary mr-1"></small>
-                                <small className="fa fa-star text-primary mr-1"></small>
-                                <small className="fa fa-star text-primary mr-1"></small>
-                                <small className="fa fa-star text-primary mr-1"></small>
-                                <small>(99)</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="product-item bg-light">
-                        <div className="product-img position-relative overflow-hidden">
-                            <img className="img-fluid w-100" src="/images/product-5.jpg" alt=""/>
-                            <div className="product-action">
-                                <Link className="btn btn-outline-dark btn-square" to=""><i className="fa fa-shopping-cart"></i></Link>
-                                <Link className="btn btn-outline-dark btn-square" to=""><i className="far fa-heart"></i></Link>
-                                <Link className="btn btn-outline-dark btn-square" to=""><i className="fa fa-sync-alt"></i></Link>
-                                <Link className="btn btn-outline-dark btn-square" to=""><i className="fa fa-search"></i></Link>
-                            </div>
-                        </div>
-                        <div className="text-center py-4">
-                            <Link className="h6 text-decoration-none text-truncate" to="">Product Name Goes Here</Link>
-                            <div className="d-flex align-items-center justify-content-center mt-2">
-                                <h5>$123.00</h5><h6 className="text-muted ml-2"><del>$123.00</del></h6>
-                            </div>
-                            <div className="d-flex align-items-center justify-content-center mb-1">
-                                <small className="fa fa-star text-primary mr-1"></small>
-                                <small className="fa fa-star text-primary mr-1"></small>
-                                <small className="fa fa-star text-primary mr-1"></small>
-                                <small className="fa fa-star text-primary mr-1"></small>
-                                <small className="fa fa-star text-primary mr-1"></small>
-                                <small>(99)</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {
+                loading ? (<Loading/>) : (
+                    products.map((product)=>(
+                        <Product product={product}/>
+                    ))
+                )
+            }
         </div>
     </div>
     {/* <!-- Products End --> */}

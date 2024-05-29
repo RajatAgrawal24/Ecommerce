@@ -5,13 +5,15 @@ import Category from './category/Category'
 import { useDispatch , useSelector } from 'react-redux'
 import { getCategory } from '../redux/actions/CategoryAction'
 import { getProducts } from '../redux/actions/ProductAction'
+import Loading from './layout/Loading'
+import MetaData from './layout/MetaData'
 
 function Home() {
     const dispatch = useDispatch()
     // console.log(dispatch)
 
     //useSelector is used to get Data
-    const {categories} = useSelector((state)=>state.cat)
+    const {categories,loading} = useSelector((state)=>state.cat)
     // console.log(categories)
 
     const {products} = useSelector((state)=>state.pro)
@@ -23,6 +25,8 @@ function Home() {
     },[dispatch])
   return (
     <>
+    <MetaData title='Home'/>
+
     {/* <!-- Carousel Start --> */}
     <div className="container-fluid mb-3">
         <div className="row px-xl-5">
@@ -127,9 +131,11 @@ function Home() {
         <h2 className="section-title position-relative text-uppercase mx-xl-5 mb-4"><span className="bg-secondary pr-3">Categories</span></h2>
         <div className="row px-xl-5 pb-3">
             {
-                categories.map((category)=>(
-                    <Category category={category}/>
-                ))
+                loading ? (<Loading/>) : (
+                    categories.map((category)=>(
+                        <Category category={category}/>
+                    ))
+                )
             }
         </div>
     </div>
@@ -141,9 +147,11 @@ function Home() {
         <h2 className="section-title position-relative text-uppercase mx-xl-5 mb-4"><span className="bg-secondary pr-3">Featured Products</span></h2>
         <div className="row px-xl-5">
             {
-                products.map((product)=>(
-                    <Product product={product}/>
-                ))
+                loading ? (<Loading/>) : (
+                    products.map((product)=>(
+                        <Product product={product}/>
+                    ))
+                )
             }
         </div>
     </div>
