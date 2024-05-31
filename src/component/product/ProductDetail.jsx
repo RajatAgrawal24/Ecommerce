@@ -1,11 +1,14 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import Product from './Product'
 import Loading from '../layout/Loading'
 import { getProductDetails, getProducts } from '../../redux/actions/ProductAction'
+import { addItemsToCart } from '../../redux/actions/CartAction'
 
 function ProductDetail() {
+    const[quantity, setQuantity] = useState(1)
+    
     const dispatch = useDispatch()
     const {products,loading} = useSelector((state)=>state.pro)
     
@@ -13,6 +16,23 @@ function ProductDetail() {
     // console.log(id)
     const {product} = useSelector((state) => state.pDetail)
     // console.log(product)
+
+    const increaseQty =()=>{
+        if (product.stock <= quantity) return;
+        const qty = quantity + 1;
+        setQuantity(qty);
+    }
+    
+    const decreaseQty =()=>{
+        if (1 >= quantity) return;
+        const qty = quantity - 1;
+        setQuantity(qty);
+    }
+
+    const AddToCartHandler = () => {
+        // alert('Add to cart')
+        dispatch(addItemsToCart(id,quantity))
+    }
 
     useEffect(() => {
         dispatch(getProducts())
@@ -125,19 +145,21 @@ function ProductDetail() {
                     <div className="d-flex align-items-center mb-4 pt-2">
                         <div className="input-group quantity mr-3" style={{width: '130px'}}>
                             <div className="input-group-btn">
-                                <button className="btn btn-primary btn-minus">
+                                <button onClick={decreaseQty} className="btn btn-primary btn-minus">
                                     <i className="fa fa-minus"></i>
                                 </button>
                             </div>
-                            <input type="text" className="form-control bg-secondary border-0 text-center" value="1"/>
+                            <input type="text" name='quantity' value={quantity} className="form-control bg-secondary border-0 text-center"/>
                             <div className="input-group-btn">
-                                <button className="btn btn-primary btn-plus">
+                                <button onClick={increaseQty} className="btn btn-primary btn-plus">
                                     <i className="fa fa-plus"></i>
                                 </button>
                             </div>
                         </div>
-                        <button className="btn btn-primary px-3"><i className="fa fa-shopping-cart mr-1"></i> Add To
+                        <Link to='/cart'>
+                        <button onClick={AddToCartHandler} className="btn btn-primary px-3"><i className="fa fa-shopping-cart mr-1"></i> Add To
                             Cart</button>
+                        </Link>
                     </div>
                     <div className="d-flex pt-2">
                         <strong className="text-dark mr-2">Share on:</strong>
