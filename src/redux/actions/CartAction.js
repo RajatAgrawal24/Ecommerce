@@ -1,3 +1,4 @@
+import { json } from "react-router-dom";
 import {
   ADD_TO_CART,
   REMOVE_CART_ITEM,
@@ -21,4 +22,5 @@ export const addItemsToCart = (id, quantity) => async (dispatch, getState) => {
       quantity,
     },
   });
+  localStorage.setItem('cart123', JSON.stringify(getState().cart.cartItems));
 };
