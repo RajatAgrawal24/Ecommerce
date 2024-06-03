@@ -21,7 +21,7 @@ export const cartReducer = (
       console.log(isItemExist);
       if (isItemExist) {
         return {
-          //replace
+          //replace 
           ...state,
           cartItems: state.cartItems.map((i) =>
             //console.log(i)
