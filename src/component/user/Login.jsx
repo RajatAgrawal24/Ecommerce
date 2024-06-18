@@ -22,6 +22,9 @@ function Login() {
             <div className="mt-3">
               <Link to="/forgot-password">Forgot password?</Link>
             </div>
+            <div className="mt-3">
+              <p>Already have an account? <Link to="/register">Register</Link></p>
+            </div>
           </div>
         </div>
       </div>

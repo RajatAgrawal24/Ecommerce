@@ -1,10 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link , useNavigate } from 'react-router-dom'
 import { useDispatch , useSelector } from 'react-redux'
 import { addItemsToCart, removeCartItem } from '../../redux/actions/CartAction'
 
 function Cart() {
     const dispatch = useDispatch()
+
+    const navigate = useNavigate()
 
     const {cartItems} = useSelector(state => state.cart)
     // console.log(cartItems)
@@ -30,7 +32,7 @@ function Cart() {
       }
 
       const checkoutHandler = () => {
-        
+        navigate('/login')
       }
   return (
     <>
