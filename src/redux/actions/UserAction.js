@@ -43,6 +43,44 @@ export const createUser = (formData) => async (dispatch) => {
     }
 }
 
+export const loginUser = (email, password) => async (dispatch) => {
+    try {
+        dispatch({ type: LOGIN_REQUEST })
+
+        const config = {
+            headers: {
+                "content-type": "application/json",
+            },
+        };
+
+        let link = 'https://apiexpress-fekv.onrender.com/api/loginUser'
+
+        const { data } = await axios.post(link, { email, password }, config)
+        console.log(data)
+
+        dispatch({
+            type: LOGIN_SUCCESS,
+            payload: data.user
+        })
+    } catch (err) {
+        dispatch({
+            type: LOGIN_FAIL,
+            payload: err.response.data.message
+        })
+    }
+}
+
+// Logout User
+export const logout = () => async (dispatch) => {
+    try {
+        await axios.get('https://apiexpress-fekv.onrender.com/api/logOut');
+
+        dispatch({ type: LOGOUT_SUCCESS });
+    } catch (error) {
+        dispatch({ type: LOGOUT_FAIL, payload: error.response.data.message });
+    }
+};
+
 export const clearErrors = () => async (dispatch) => {
     dispatch({ type: CLEAR_ERRORS })
 }

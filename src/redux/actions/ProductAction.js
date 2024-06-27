@@ -24,7 +24,7 @@ export const getProducts = () => async(dispatch) => {
     }catch(err){
         dispatch({
             type : ALL_PRODUCT_FAIL,
-            payload : error.respond.data.message
+            payload : err.respond.data.message
         })
     }
 }
