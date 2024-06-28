@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {Routes,Route} from "react-router-dom"
 import Header from './component/layout/Header'
 import Home from './component/Home'
@@ -10,8 +10,16 @@ import Register from './component/user/Register'
 import Dashboard from './component/admin/Dashboard'
 import Contact from './component/Contact'
 import Profile from './component/user/Profile'
+import { useDispatch } from 'react-redux'
+import { loadUser } from './redux/actions/UserAction'
 
 function App() {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(loadUser())
+  },[dispatch])
+  
   return (
     <>
     <Header/>

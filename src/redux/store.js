@@ -19,11 +19,6 @@ let initializeState = {
         cartItems : localStorage.getItem('cart123')
         ? JSON.parse(localStorage.getItem('cart123'))
         : []
-    },
-    auth: {
-        loading: false,
-        user: null,
-        isAuthenticated: false,
     }
 }
 

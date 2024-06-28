@@ -25,7 +25,7 @@ function Login() {
     }
     if(isAuthenticated) {
       alert.success("Login successful!");
-      navigate('/cart')
+      navigate('/')
     }
   },[error , alert, dispatch ,isAuthenticated ,navigate])
 

@@ -8,7 +8,7 @@ function Header() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const { user, loading } = useSelector(state => state.auth)
-    console.log(user , loading)
+    // console.log(user , loading)
     const { cartItems } = useSelector(state => state.cart)
     const alert = useAlert()
 

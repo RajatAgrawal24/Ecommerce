@@ -56,7 +56,7 @@ export const loginUser = (email, password) => async (dispatch) => {
         let link = 'https://apiexpress-fekv.onrender.com/api/loginUser'
 
         const { data } = await axios.post(link, { email, password }, config)
-        console.log(data)
+        // console.log(data)
 
         dispatch({
             type: LOGIN_SUCCESS,
@@ -65,6 +65,28 @@ export const loginUser = (email, password) => async (dispatch) => {
     } catch (err) {
         dispatch({
             type: LOGIN_FAIL,
+            payload: err.response.data.message
+        })
+    }
+}
+
+export const loadUser = () => async (dispatch) => {
+    try {
+        console.log('loading')
+        // dispatch({ type: LOAD_USER_REQUEST })
+
+        // let link = 'https://apiexpress-fekv.onrender.com/api/me'
+
+        // const { data } = await axios.get(link)
+        // console.log(data)
+
+        // dispatch({
+        //     type: LOAD_USER_SUCCESS,
+        //     payload: data.user
+        // })
+    } catch (err) {
+        dispatch({
+            type: LOAD_USER_FAIL,
             payload: err.response.data.message
         })
     }
