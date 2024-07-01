@@ -53,10 +53,10 @@ export const loginUser = (email, password) => async (dispatch) => {
             },
         };
 
-        let link = 'https://apiexpress-fekv.onrender.com/api/loginUser'
+        let link = '/api/loginUser'
 
         const { data } = await axios.post(link, { email, password }, config)
-        // console.log(data)
+        console.log(data)
 
         dispatch({
             type: LOGIN_SUCCESS,
@@ -72,18 +72,18 @@ export const loginUser = (email, password) => async (dispatch) => {
 
 export const loadUser = () => async (dispatch) => {
     try {
-        console.log('loading')
-        // dispatch({ type: LOAD_USER_REQUEST })
+        // console.log('loading')
+        dispatch({ type: LOAD_USER_REQUEST })
 
-        // let link = 'https://apiexpress-fekv.onrender.com/api/me'
+        let link = '/api/me'
 
-        // const { data } = await axios.get(link)
-        // console.log(data)
+        const { data } = await axios.get(link)
+        console.log(data)
 
-        // dispatch({
-        //     type: LOAD_USER_SUCCESS,
-        //     payload: data.user
-        // })
+        dispatch({
+            type: LOAD_USER_SUCCESS,
+            payload: data.user
+        })
     } catch (err) {
         dispatch({
             type: LOAD_USER_FAIL,
@@ -95,7 +95,7 @@ export const loadUser = () => async (dispatch) => {
 // Logout User
 export const logout = () => async (dispatch) => {
     try {
-        await axios.get('https://apiexpress-fekv.onrender.com/api/logOut');
+        await axios.get('/api/logOut');
 
         dispatch({ type: LOGOUT_SUCCESS });
     } catch (error) {

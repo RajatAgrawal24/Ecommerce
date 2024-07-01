@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import {Routes,Route} from "react-router-dom"
+import {Routes,Route, useLocation} from "react-router-dom"
 import Header from './component/layout/Header'
 import Home from './component/Home'
 import Footer from './component/layout/Footer'
@@ -17,6 +17,7 @@ function App() {
   const dispatch = useDispatch()
 
   useEffect(() => {
+    // console.log('useEffect triggered');
     dispatch(loadUser())
   },[dispatch])
   

@@ -10,7 +10,7 @@ import axios from 'axios'
 export const getCategory = () => async (dispatch) => {
     try {
         dispatch({type : ALL_CATEGORY_REQUEST})
-        let link = 'https://apiexpress-fekv.onrender.com/api/getAllCategories'
+        let link = '/api/getAllCategories'
         const {data} = await axios.get(link)
         // console.log(data)
         
