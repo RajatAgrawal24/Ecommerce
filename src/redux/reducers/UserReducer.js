@@ -21,18 +21,18 @@ import {
     CLEAR_ERRORS
 } from '../constants/UserConstant'
 
-export const userRegisterReducer = (state={user:{}} , action ) => {
+export const userRegisterReducer = (state = { user: {} }, action) => {
     switch (action.type) {
         case REGISTER_USER_REQUEST:
         case LOGIN_REQUEST:
-        case LOAD_USER_REQUEST :
+        case LOAD_USER_REQUEST:
             return {
-                loading:true,
-                isAuthenticated:false,
+                loading: true,
+                isAuthenticated: false,
             }
         case REGISTER_USER_SUCCESS:
         case LOGIN_SUCCESS:
-        case LOAD_USER_SUCCESS :
+        case LOAD_USER_SUCCESS:
             return {
                 loading: false,
                 isAuthenticated: true,
@@ -40,7 +40,7 @@ export const userRegisterReducer = (state={user:{}} , action ) => {
             }
         case REGISTER_USER_FAIL:
         case LOGIN_FAIL:
-        case LOAD_USER_FAIL :
+        case LOAD_USER_FAIL:
             return {
                 loading: false,
                 isAuthenticated: false,
@@ -51,17 +51,43 @@ export const userRegisterReducer = (state={user:{}} , action ) => {
                 loading: false,
                 user: null,
                 isAuthenticated: false,
-            };
+            }
         case LOGOUT_FAIL:
             return {
                 ...state,
                 loading: false,
                 error: action.payload,
-            };
+            }
+        case UPDATE_PROFILE_REQUEST:
+        case UPDATE_PASSWORD_REQUEST:
+            return {
+                ...state,
+                loading: true,
+            }
+        case UPDATE_PROFILE_SUCCESS:
+        case UPDATE_PASSWORD_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                isUpdated: action.payload,
+            }
+        case UPDATE_PROFILE_FAIL:
+        case UPDATE_PASSWORD_FAIL:
+            return {
+                ...state,
+                loading: false,
+                error: action.payload,
+            }
+        case UPDATE_PROFILE_RESET:
+        case UPDATE_PASSWORD_RESET:
+            return {
+                ...state,
+                isUpdated: false,
+            }
         case CLEAR_ERRORS:
             return {
                 ...state,
-                error:null
+                error: null
             }
         default:
             return state;

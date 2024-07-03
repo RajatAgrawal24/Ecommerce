@@ -18,7 +18,11 @@ let initializeState = {
     cart: {
         cartItems : localStorage.getItem('cart123')
         ? JSON.parse(localStorage.getItem('cart123'))
-        : []
+        : [],
+        
+    shippingInfo: localStorage.getItem("shippingInfo")
+        ? JSON.parse(localStorage.getItem("shippingInfo"))
+        : {},
     }
 }
 

@@ -26,7 +26,7 @@ import axios from 'axios'
 export const createUser = (formData) => async (dispatch) => {
     try {
         dispatch({ type: REGISTER_USER_REQUEST })
-        let link = 'https://apiexpress-fekv.onrender.com/api/userInsert'
+        let link = '/api/userInsert'
 
         const { data } = await axios.post(link, formData)
         // console.log(data)
@@ -56,7 +56,7 @@ export const loginUser = (email, password) => async (dispatch) => {
         let link = '/api/loginUser'
 
         const { data } = await axios.post(link, { email, password }, config)
-        console.log(data)
+        // console.log(data)
 
         dispatch({
             type: LOGIN_SUCCESS,
@@ -78,7 +78,7 @@ export const loadUser = () => async (dispatch) => {
         let link = '/api/me'
 
         const { data } = await axios.get(link)
-        console.log(data)
+        // console.log(data)
 
         dispatch({
             type: LOAD_USER_SUCCESS,
@@ -101,6 +101,64 @@ export const logout = () => async (dispatch) => {
     } catch (error) {
         dispatch({ type: LOGOUT_FAIL, payload: error.response.data.message });
     }
+};
+
+export const updateProfile = (formData) => async (dispatch) => {
+    try {
+        dispatch({ type: UPDATE_PROFILE_REQUEST });
+
+        const config = {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+        };
+
+        const { data } = await axios.post('/api/updateProfile', formData, config);
+        // console.log(data);
+
+        dispatch({
+            type: UPDATE_PROFILE_SUCCESS,
+            payload: data.status,
+        });
+    } catch (error) {
+        dispatch({
+            type: UPDATE_PROFILE_FAIL,
+            payload: error.response.data.message,
+        });
+    }
+};
+
+export const updatePassword = (passwords) => async (dispatch) => {
+    try {
+        dispatch({ type: UPDATE_PASSWORD_REQUEST });
+
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        };
+
+        const { data } = await axios.post('/api/updatePassword', passwords, config);
+        console.log(data)
+
+        dispatch({
+            type: UPDATE_PASSWORD_SUCCESS,
+            payload: data.status,
+        });
+    } catch (error) {
+        dispatch({
+            type: UPDATE_PASSWORD_FAIL,
+            payload: error.response.data.message,
+        });
+    }
+};
+
+export const resetUpdateProfile = () => async (dispatch) => {
+    dispatch({ type: UPDATE_PROFILE_RESET });
+};
+
+export const resetUpdatePassword = () => async (dispatch) => {
+    dispatch({ type: UPDATE_PASSWORD_RESET });
 };
 
 export const clearErrors = () => async (dispatch) => {

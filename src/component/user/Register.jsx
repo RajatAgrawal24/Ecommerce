@@ -64,7 +64,7 @@ function Register() {
               </div>
               <div className="form-group">
                 <label htmlFor="image">Image :</label>
-                <input onChange={(e) => setImage(e.target.files[0])} type="file" className="form-control" id="image" placeholder="Confirm your password" required/>
+                <input onChange={(e) => setImage(e.target.files[0])} type="file" className="form-control" id="image" required/>
               </div>
               <button type="submit" className="btn btn-primary">Register</button>
             </form>
