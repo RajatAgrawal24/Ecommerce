@@ -5,6 +5,9 @@ import {
     PRODUCT_DETAILS_REQUEST,
     PRODUCT_DETAILS_SUCCESS,
     PRODUCT_DETAILS_FAIL,
+    CATEGORY_PRODUCT_REQUEST,
+    CATEGORY_PRODUCT_SUCCESS,
+    CATEGORY_PRODUCT_FAIL,
     CLEAR_ERRORS
 } from '../constants/ProductConstant'
 
@@ -48,3 +51,28 @@ export const getProductDetails = (id) => async(dispatch) => {
         })
     }
 }
+
+export const listCategoryProducts = (category) => async (dispatch) => {
+  try {
+    // console.log(category)
+    dispatch({ type: CATEGORY_PRODUCT_REQUEST });
+
+    const { data } = await axios.get(
+      `/api/product/getCategoryProducts?category=${category}`
+    );
+    // console.log(data);
+
+    dispatch({
+      type: CATEGORY_PRODUCT_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: CATEGORY_PRODUCT_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};

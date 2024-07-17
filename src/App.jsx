@@ -23,6 +23,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import Success from './component/payment/Success'
 import MyOrder from './component/order/MyOrder'
 import OrderDetails from './component/order/OrderDetails'
+import CategoryProduct from './component/category/CategoryProduct'
 
 function App() {
   const dispatch = useDispatch()
@@ -46,7 +47,8 @@ function App() {
     <Header/>
     <Routes>
       <Route path='/' element={<Home/>}/>
-      <Route path='productDetail/:id' element={<ProductDetail/>}/>
+      <Route path='/productDetail/:id' element={<ProductDetail/>}/>
+      <Route path='/category/:category' element={<CategoryProduct/>}/>
       <Route path='/cart' element={<Cart/>}/>
       <Route path='/login' element={<Login/>}/>
       <Route path='/register' element={<Register/>}/>

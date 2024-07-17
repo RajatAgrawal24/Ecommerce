@@ -5,7 +5,7 @@ function Category({category}) {
   return (
     <>
     <div className="col-lg-3 col-md-4 col-sm-6 pb-1">
-        <Link className="text-decoration-none" to="">
+        <Link className="text-decoration-none" to={`/category/${category.name}`}>
             <div className="cat-item d-flex align-items-center mb-4">
                 <div className="overflow-hidden" style={{width: '100px', height: '100px'}}>
                     <img className="img-fluid" src={category.image.url} alt=""/>

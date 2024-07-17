@@ -20,7 +20,7 @@ function Product({product}) {
             <div className="text-center py-4">
                 <Link className="h6 text-decoration-none text-truncate" to={`/productDetail/${product._id}`}>{product.name}</Link>
                 <div className="d-flex align-items-center justify-content-center mt-2">
-                    <h5>${product.price}</h5><h6 className="text-muted ml-2"><del>${product.price}</del></h6>
+                    <h5>RS {product.price}</h5><h6 className="text-muted ml-2"><del>RS {product.price}</del></h6>
                 </div>
                 <div className="d-flex align-items-center justify-content-center mb-1">
                     <small className="fa fa-star text-primary mr-1"></small>
