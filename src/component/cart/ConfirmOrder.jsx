@@ -31,7 +31,7 @@ function ConfirmOrder() {
     return (
         <>
             <MetaData title={'Confirm Order'} />
-            <CheckoutStep />
+            <CheckoutStep shipping confirmOrder/>
             
             <div className="container">
                 <div className="row d-flex justify-content-between">
