@@ -18,7 +18,7 @@ export const cartReducer = (
       const isItemExist = state.cartItems.find(
         (a) => a.product === item.product
       );
-      console.log(isItemExist);
+      // console.log(isItemExist);
       if (isItemExist) {
         return {
           //replace 
