@@ -44,8 +44,8 @@ function CategoryProduct() {
                                         </div>
                                     </div>
                                     <div className="text-center py-4">
-                                        <h5>{product.name}</h5>
-                                        <div className="d-flex align-items-center justify-content-center mt-2">
+                                    <Link className="h6 text-decoration-none text-truncate" to={`/productDetail/${product._id}`}>{product.name}</Link>
+                                    <div className="d-flex align-items-center justify-content-center mt-2">
                                             <h5>Rs. {product.price}</h5><h6 className="text-muted ml-2"><del>Rs. {product.price}</del></h6>
                                         </div>
                                         <div className="d-flex align-items-center justify-content-center mb-1">

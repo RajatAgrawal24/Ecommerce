@@ -67,7 +67,7 @@ import {
       dispatch({ type: ORDER_DETAILS_REQUEST });
   
       const { data } = await axios.get(`/api/order/getSingleOrder/${id}`);
-      console.log(data)
+      // console.log(data)
   
       dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data });
     } catch (error) {

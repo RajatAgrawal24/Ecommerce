@@ -24,6 +24,7 @@ import MyOrder from './component/order/MyOrder'
 import OrderDetails from './component/order/OrderDetails'
 import CategoryProduct from './component/category/CategoryProduct'
 import ProtectedRoutes from './component/Protected Routes/ProtectedRoutes'
+import ProductList from './component/admin/ProductList'
 
 function App() {
   const dispatch = useDispatch()
@@ -56,10 +57,13 @@ function App() {
       <Route path='/register' element={<Register/>}/>
       <Route path='/contact' element={<Contact/>}/>
 
+      {/* Admin Routes */}
+      <Route path='/dashboard' element={<Dashboard/>}/>
+      <Route path='/admin/product' element={<ProductList/>}/>
+
       {/* Securing Routes */}
       <Route element={<ProtectedRoutes isAuthenticated={isAuthenticated}/>}>
         <Route path='/profile' element={<Profile/>}/>
-        <Route path='/dashboard' element={<Dashboard/>}/>
         <Route path='/shipping' element={<Shipping/>}/>
         <Route path='/order/confirm' element={<ConfirmOrder/>}/>
         {

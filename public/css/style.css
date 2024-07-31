@@ -22,7 +22,7 @@
     --white: #fff;
     --gray: #6c757d;
     --gray-dark: #343a40;
-    --primary: #FFD333;
+    --primary: #D6BD98;
     --secondary: #F5F5F5;
     --success: #28a745;
     --info: #17a2b8;
@@ -155,7 +155,7 @@
   }
   
   a {
-    color: #FFD333;
+    color: #D6BD98;
     text-decoration: none;
     background-color: transparent;
   }
@@ -2368,8 +2368,8 @@
   
   .btn-primary {
     color: #212529;
-    background-color: #FFD333;
-    border-color: #FFD333;
+    background-color: #D6BD98;
+    border-color: #D6BD98;
   }
   
   .btn-primary:hover {
@@ -2387,8 +2387,8 @@
   
   .btn-primary.disabled, .btn-primary:disabled {
     color: #212529;
-    background-color: #FFD333;
-    border-color: #FFD333;
+    background-color: #D6BD98;
+    border-color: #D6BD98;
   }
   
   .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
@@ -2663,14 +2663,14 @@
   }
   
   .btn-outline-primary {
-    color: #FFD333;
-    border-color: #FFD333;
+    color: #D6BD98;
+    border-color: #D6BD98;
   }
   
   .btn-outline-primary:hover {
     color: #212529;
-    background-color: #FFD333;
-    border-color: #FFD333;
+    background-color: #D6BD98;
+    border-color: #D6BD98;
   }
   
   .btn-outline-primary:focus, .btn-outline-primary.focus {
@@ -2678,15 +2678,15 @@
   }
   
   .btn-outline-primary.disabled, .btn-outline-primary:disabled {
-    color: #FFD333;
+    color: #D6BD98;
     background-color: transparent;
   }
   
   .btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active,
   .show > .btn-outline-primary.dropdown-toggle {
     color: #212529;
-    background-color: #FFD333;
-    border-color: #FFD333;
+    background-color: #D6BD98;
+    border-color: #D6BD98;
   }
   
   .btn-outline-primary:not(:disabled):not(.disabled):active:focus, .btn-outline-primary:not(:disabled):not(.disabled).active:focus,
@@ -2920,7 +2920,7 @@
   
   .btn-link {
     font-weight: 400;
-    color: #FFD333;
+    color: #D6BD98;
     text-decoration: none;
   }
   
@@ -3217,7 +3217,7 @@
   .dropdown-item.active, .dropdown-item:active {
     color: #fff;
     text-decoration: none;
-    background-color: #FFD333;
+    background-color: #D6BD98;
   }
   
   .dropdown-item.disabled, .dropdown-item:disabled {
@@ -3505,8 +3505,8 @@
   
   .custom-control-input:checked ~ .custom-control-label::before {
     color: #fff;
-    border-color: #FFD333;
-    background-color: #FFD333;
+    border-color: #D6BD98;
+    background-color: #D6BD98;
   }
   
   .custom-control-input:focus ~ .custom-control-label::before {
@@ -3566,8 +3566,8 @@
   }
   
   .custom-checkbox .custom-control-input:indeterminate ~ .custom-control-label::before {
-    border-color: #FFD333;
-    background-color: #FFD333;
+    border-color: #D6BD98;
+    background-color: #D6BD98;
   }
   
   .custom-checkbox .custom-control-input:indeterminate ~ .custom-control-label::after {
@@ -3791,7 +3791,7 @@
     width: 1rem;
     height: 1rem;
     margin-top: -0.25rem;
-    background-color: #FFD333;
+    background-color: #D6BD98;
     border: 0;
     transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     appearance: none;
@@ -3819,7 +3819,7 @@
   .custom-range::-moz-range-thumb {
     width: 1rem;
     height: 1rem;
-    background-color: #FFD333;
+    background-color: #D6BD98;
     border: 0;
     transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     appearance: none;
@@ -3850,7 +3850,7 @@
     margin-top: 0;
     margin-right: 0.2rem;
     margin-left: 0.2rem;
-    background-color: #FFD333;
+    background-color: #D6BD98;
     border: 0;
     transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     appearance: none;
@@ -3978,7 +3978,7 @@
   .nav-pills .nav-link.active,
   .nav-pills .show > .nav-link {
     color: #fff;
-    background-color: #FFD333;
+    background-color: #D6BD98;
   }
   
   .nav-fill > .nav-link,
@@ -4584,7 +4584,7 @@
     padding: 0.5rem 0.75rem;
     margin-left: -1px;
     line-height: 1.25;
-    color: #FFD333;
+    color: #D6BD98;
     background-color: #fff;
     border: 1px solid #dee2e6;
   }
@@ -4610,8 +4610,8 @@
   .page-item.active .page-link {
     z-index: 3;
     color: #fff;
-    background-color: #FFD333;
-    border-color: #FFD333;
+    background-color: #D6BD98;
+    border-color: #D6BD98;
   }
   
   .page-item.disabled .page-link {
@@ -4672,7 +4672,7 @@
   
   .badge-primary {
     color: #212529;
-    background-color: #FFD333;
+    background-color: #D6BD98;
   }
   
   a.badge-primary:hover, a.badge-primary:focus {
@@ -4973,7 +4973,7 @@
     color: #fff;
     text-align: center;
     white-space: nowrap;
-    background-color: #FFD333;
+    background-color: #D6BD98;
     transition: width 0.6s ease;
   }
   
@@ -5049,8 +5049,8 @@
   .list-group-item.active {
     z-index: 2;
     color: #fff;
-    background-color: #FFD333;
-    border-color: #FFD333;
+    background-color: #D6BD98;
+    border-color: #D6BD98;
   }
   
   .list-group-item + .list-group-item {
@@ -6096,7 +6096,7 @@
   }
   
   .bg-primary {
-    background-color: #FFD333 !important;
+    background-color: #D6BD98 !important;
   }
   
   a.bg-primary:hover, a.bg-primary:focus,
@@ -6224,7 +6224,7 @@
   }
   
   .border-primary {
-    border-color: #FFD333 !important;
+    border-color: #D6BD98 !important;
   }
   
   .border-secondary {
@@ -9266,7 +9266,7 @@
   }
   
   .text-primary {
-    color: #FFD333 !important;
+    color: #D6BD98 !important;
   }
   
   a.text-primary:hover, a.text-primary:focus {
@@ -9510,7 +9510,7 @@
   
   .navbar-dark .navbar-nav .nav-link:hover,
   .navbar-dark .navbar-nav .nav-link.active {
-    color: #FFD333;
+    color: #D6BD98;
   }
   
   @media (max-width: 991.98px) {
@@ -9606,7 +9606,7 @@
   }
   
   .cat-item:hover {
-    background: #FFD333;
+    background: #D6BD98;
   }
   
   .cat-item img {
@@ -9681,7 +9681,7 @@
   }
   
   .product-item .btn:hover {
-    color: #FFD333 !important;
+    color: #D6BD98 !important;
   }
   
   .table.table-borderless thead tr,

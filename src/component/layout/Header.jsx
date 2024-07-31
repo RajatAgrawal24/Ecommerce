@@ -55,7 +55,7 @@ function Header() {
                                     </div>
                                 ) : (!loading && <Link className='dropdown-item' to='/login'>Sign In</Link>)
                             }
-                            <div className="btn-group mx-2">
+                            {/* <div className="btn-group mx-2">
                                 <button type="button" className="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">USD</button>
                                 <div className="dropdown-menu dropdown-menu-right">
                                     <button className="dropdown-item" type="button">EUR</button>
@@ -70,7 +70,7 @@ function Header() {
                                     <button className="dropdown-item" type="button">AR</button>
                                     <button className="dropdown-item" type="button">RU</button>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                         <div className="d-inline-flex align-items-center d-block d-lg-none">
                             <Link to="" className="btn px-0 ml-2">
@@ -152,7 +152,7 @@ function Header() {
                             <div className="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                                 <div className="navbar-nav mr-auto py-0">
                                     <Link className='nav-item nav-link active' to='/'>Home</Link>
-                                    <Link className='nav-item nav-link' to='/shop'>Shop</Link>
+                                    {/* <Link className='nav-item nav-link' to='/shop'>Shop</Link>
                                     <Link className='nav-item nav-link' to='/detail'>Shop Detail</Link>
                                     <div className="nav-item dropdown">
                                         <Link to="#" className="nav-link dropdown-toggle" data-toggle="dropdown">Pages <i className="fa fa-angle-down mt-1"></i></Link>
@@ -160,7 +160,7 @@ function Header() {
                                             <Link to="/cart" className="dropdown-item">Shopping Cart</Link>
                                             <Link to="/checkout" className="dropdown-item">Checkout</Link>
                                         </div>
-                                    </div>
+                                    </div> */}
                                     <Link className='nav-item nav-link' to='/contact'>Contact</Link>
                                 </div>
                                 <div className="navbar-nav ml-auto py-0 d-none d-lg-block">
