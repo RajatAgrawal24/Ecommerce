@@ -26,6 +26,8 @@ import CategoryProduct from './component/category/CategoryProduct'
 import ProtectedRoutes from './component/Protected Routes/ProtectedRoutes'
 import ProductList from './component/admin/ProductList'
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 function App() {
   const dispatch = useDispatch()
 
@@ -34,7 +36,7 @@ function App() {
   const [stripeApiKey, setStripeApiKey] = useState("");
 
   async function getStripeApiKey() {
-    const { data } = await axios.get('/api/stripeapiKey');
+    const { data } = await axios.get(`${API_BASE_URL}/stripeapiKey`);
     setStripeApiKey(data.stripeApiKey);
   }
 

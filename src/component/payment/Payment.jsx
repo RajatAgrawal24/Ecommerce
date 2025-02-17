@@ -14,6 +14,8 @@ import CheckoutStep from '../cart/CheckoutStep';
 import { createOrder , clearErrors } from '../../redux/actions/OrderAction';
 import axios from 'axios';
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const options = {
   style: {
       base: {
@@ -56,7 +58,7 @@ function Payment() {
     document.querySelector('#pay_btn').disabled = true;
 
     try {
-      const { data } = await axios.post("/api/payment/process",paymentData);
+      const { data } = await axios.post(`${API_BASE_URL}/payment/process`,paymentData);
       // console.log(data)
 
       const client_secret = data.client_secret;
