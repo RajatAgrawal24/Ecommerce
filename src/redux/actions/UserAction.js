@@ -21,12 +21,14 @@ import {
     CLEAR_ERRORS
 } from '../constants/UserConstant'
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 import axios from 'axios'
 
 export const createUser = (formData) => async (dispatch) => {
     try {
         dispatch({ type: REGISTER_USER_REQUEST })
-        let link = '/api/userInsert'
+        let link = `${API_BASE_URL}/userInsert`
 
         const { data } = await axios.post(link, formData)
         // console.log(data)
@@ -53,7 +55,7 @@ export const loginUser = (email, password) => async (dispatch) => {
             },
         };
 
-        let link = '/api/loginUser'
+        let link = `${API_BASE_URL}/loginUser`
 
         const { data } = await axios.post(link, { email, password }, config)
         // console.log(data)
@@ -75,7 +77,7 @@ export const loadUser = () => async (dispatch) => {
         // console.log('loading')
         dispatch({ type: LOAD_USER_REQUEST })
 
-        let link = '/api/me'
+        let link = `${API_BASE_URL}/me`
 
         const { data } = await axios.get(link)
         // console.log(data)
@@ -95,7 +97,7 @@ export const loadUser = () => async (dispatch) => {
 // Logout User
 export const logout = () => async (dispatch) => {
     try {
-        await axios.get('/api/logOut');
+        await axios.get(`${API_BASE_URL}/logOut`);
 
         dispatch({ type: LOGOUT_SUCCESS });
     } catch (error) {
@@ -113,7 +115,7 @@ export const updateProfile = (formData) => async (dispatch) => {
             },
         };
 
-        const { data } = await axios.post('/api/updateProfile', formData, config);
+        const { data } = await axios.post(`${API_BASE_URL}/updateProfile`, formData, config);
         // console.log(data);
 
         dispatch({
@@ -138,7 +140,7 @@ export const updatePassword = (passwords) => async (dispatch) => {
             },
         };
 
-        const { data } = await axios.post('/api/updatePassword', passwords, config);
+        const { data } = await axios.post(`${API_BASE_URL}/updatePassword`, passwords, config);
         console.log(data)
 
         dispatch({

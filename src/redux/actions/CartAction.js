@@ -5,10 +5,12 @@ import {
   SAVE_SHIPPING_INFO,
 } from "../constants/CartConstant";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 import axios from "axios";
 
 export const addItemsToCart = (id, quantity) => async (dispatch, getState) => {
-  const { data } = await axios.get(`/api/getProductDetail/${id}`);
+  const { data } = await axios.get(`${API_BASE_URL}/getProductDetail/${id}`);
 //   console.log(quantity);
 
   dispatch({

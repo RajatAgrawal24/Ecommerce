@@ -11,12 +11,14 @@ import {
     CLEAR_ERRORS
 } from '../constants/ProductConstant'
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 import axios from 'axios'
 
 export const getProducts = () => async(dispatch) => {
     try{
         dispatch({type : ALL_PRODUCT_REQUEST})
-        let link = '/api/products'
+        let link = `${API_BASE_URL}/products`
         const {data} = await axios.get(link)
         // console.log(data)
 
@@ -35,7 +37,7 @@ export const getProducts = () => async(dispatch) => {
 export const getProductDetails = (id) => async(dispatch) => {
     try{
         dispatch({ type: PRODUCT_DETAILS_REQUEST })
-        let link = `/api/getProductDetail/${id}`
+        let link = `${API_BASE_URL}/getProductDetail/${id}`
 
         const { data } = await axios.get(link)
         // console.log(data)
@@ -58,7 +60,7 @@ export const listCategoryProducts = (category) => async (dispatch) => {
     dispatch({ type: CATEGORY_PRODUCT_REQUEST });
 
     const { data } = await axios.get(
-      `/api/product/getCategoryProducts?category=${category}`
+      `${API_BASE_URL}/product/getCategoryProducts?category=${category}`
     );
     // console.log(data);
 

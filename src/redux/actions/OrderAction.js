@@ -20,6 +20,8 @@ import {
     CLEAR_ERRORS,
   } from "../constants/OrderConstant";
   
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
   import axios from "axios";
   
   // Create Order
@@ -32,7 +34,7 @@ import {
           "Content-Type": "application/json",
         },
       };
-      const { data } = await axios.post("/api/order/create", order, config);
+      const { data } = await axios.post(`${API_BASE_URL}/order/create`, order, config);
   
       dispatch({ type: CREATE_ORDER_SUCCESS, payload: data });
     } catch (error) {
@@ -48,7 +50,7 @@ import {
     try {
       dispatch({ type: MY_ORDERS_REQUEST });
   
-      const { data } = await axios.get("/api/order/myOrder");
+      const { data } = await axios.get(`${API_BASE_URL}/order/myOrder`);
       // console.log('order in action--->>',data);
   
       dispatch({ type: MY_ORDERS_SUCCESS, payload: data.data });
@@ -66,7 +68,7 @@ import {
     try {
       dispatch({ type: ORDER_DETAILS_REQUEST });
   
-      const { data } = await axios.get(`/api/order/getSingleOrder/${id}`);
+      const { data } = await axios.get(`${API_BASE_URL}/order/getSingleOrder/${id}`);
       // console.log(data)
   
       dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data });
@@ -83,7 +85,7 @@ import {
     try {
       dispatch({ type: ALL_ORDERS_REQUEST });
   
-      const { data } = await axios.get("/api/order/getAllOrders");
+      const { data } = await axios.get(`${API_BASE_URL}/order/getAllOrders`);
   
       dispatch({ type: ALL_ORDERS_SUCCESS, payload: data.orders });
     } catch (error) {
@@ -105,7 +107,7 @@ import {
         },
       };
       const { data } = await axios.put(
-        `/api/admin/order/${id}`,
+        `${API_BASE_URL}/admin/order/${id}`,
         order,
         config
       );
@@ -124,7 +126,7 @@ import {
     try {
       dispatch({ type: DELETE_ORDER_REQUEST });
   
-      const { data } = await axios.delete(`/api/admin/order/${id}`);
+      const { data } = await axios.delete(`${API_BASE_URL}/admin/order/${id}`);
   
       dispatch({ type: DELETE_ORDER_SUCCESS, payload: data.success });
     } catch (error) {

@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://apiexpress-fekv.onrender.com',
+        target: 'https://apiexpress-fekv.onrender.com/',
         changeOrigin: true,
         
       },
